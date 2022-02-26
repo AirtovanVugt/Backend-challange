@@ -12,18 +12,45 @@
             foreach($list as $count => $lists){
     ?>
         <div class=list>
-            <p class="headText"><?php echo $lists["hoofdText"]; ?></p>
+            <div class="headList">
+                <p class="headText"><?php echo $lists["hoofdText"]; ?></p>
+                <div class="deleteEditlist">
+                    <button class="edit" onclick="editLijst(<?php echo $lists['id']; ?>)"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="delete" onclick="verwijderLijst(<?php echo $lists['id']; ?>)"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div>
+            <div class="editList" id="editList<?php echo $lists["id"]; ?>">
+                <form method="post" action="<?php echo "controller/updateList.php" ?>">
+                    <label for="titel">verander titel</label>
+                    <input type="text" name="titel">
+                    <input type="hidden" name="id" value="<?php echo $lists["id"]; ?>">
+                    <div class="centerH">
+                        <button>veranderen</button>
+                    </div>
+                </form>
+            </div>
             <div class="card-container">
                 <?php
-                    foreach($description as $counter => $descriptions){
+                    foreach($description as $descriptions){
                         if($lists["id"] == $descriptions["hoofdTextId"]){
                 ?>
                     <div class="card">
                         <p><?php echo $descriptions["omschrijving"]; ?></p>
-                        <div class="deleteEdit">
-                            <button class="edit" onclick="editOmschrijving(<?php echo $counter ?>)"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <div class="deleteEditdescription">
+                            <button class="edit" onclick="editOmschrijving(<?php echo $descriptions['id']; ?>)"><i class="fa-solid fa-pen-to-square"></i></button>
                             <button class="delete" onclick="verwijderOmschrijving(<?php echo $descriptions['id']; ?>)"><i class="fa-solid fa-trash"></i></button>
                         </div>
+                    </div>
+
+                    <div class="editCard" id="editCard<?php echo $descriptions['id']; ?>">
+                        <form method="post" action="<?php echo "controller/updateDescription.php" ?>">
+                            <label for="omschrijving">verander beschrijving</label>
+                            <textarea name="omschrijving" id="editOmschrijving"><?php echo $descriptions['omschrijving']; ?></textarea>
+                            <input type="hidden" name="id" value="<?php echo $descriptions["id"]; ?>">
+                            <div class="centerH">
+                                <button>verander</button>
+                            </div>
+                        </form>
                     </div>
                 <?php
                         }
@@ -68,9 +95,9 @@
 <?php include("includes/footer.php"); ?>
 
 <script>
-    var array = <?php echo json_encode($list); ?>;;
+    var li = <?php echo json_encode($list); ?>;
 
-    for (let i=0; i<=array.length-1; i++){
+    for (let i=0; i<=li.length-1; i++){
         document.getElementById("showCreatecard" + i).onclick = function(){
             document.getElementById("createCard" + i).classList.toggle("show");
         }
@@ -81,5 +108,21 @@
         if(zekerWeten == true){
             window.location.href = "controller/deleteDescription.php?id=" + verwijderen;
         }
+    }
+
+    function editOmschrijving(edit){
+        document.getElementById("editCard" + edit).classList.toggle("show");
+    }
+
+    function verwijderLijst(verwijderen){
+        zekerWeten = confirm("Weet je zeker dat je deze lijst wilt verwijderen?");
+        if(zekerWeten == true){
+            window.location.href = "controller/deletelist.php?id=" + verwijderen;
+        }
+    }
+
+    function editLijst(showen){
+        console.log(showen);
+        document.getElementById("editList" + showen).classList.toggle("show");
     }
 </script>

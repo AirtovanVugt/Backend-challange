@@ -40,11 +40,47 @@ header img {
   border-radius: 15px;
   box-sizing: border-box;
 }
-.list .headText {
+.list .headList {
+  display: flex;
+}
+.list .headList .headText {
   font-size: 20px;
   font-weight: 900;
-  text-align: center;
   margin-bottom: 10px;
+}
+.list .headList .deleteEditlist {
+  justify-content: right;
+  margin-left: auto;
+}
+.list .headList .deleteEditlist button {
+  background-color: black;
+  color: white;
+}
+.list .headList .deleteEditlist .delete {
+  margin-left: 10px;
+}
+.list .headList .deleteEditlist .edit:hover {
+  color: blue;
+}
+.list .headList .deleteEditlist .delete:hover {
+  color: red;
+}
+.list .editList {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 5px;
+  display: none;
+}
+.list .editList input {
+  width: 100%;
+  padding: 2px 5px;
+  box-sizing: border-box;
+  margin: 5px 0px;
+  border-radius: 10px;
+}
+.list .editList.show {
+  display: block;
 }
 .list .card {
   position: relative;
@@ -53,7 +89,7 @@ header img {
   margin-bottom: 5px;
   border-radius: 10px;
 }
-.list .card .deleteEdit {
+.list .card .deleteEditdescription {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -63,18 +99,38 @@ header img {
 .list .card:hover {
   padding-bottom: 25px;
 }
-.list .card:hover .deleteEdit {
+.list .card:hover .deleteEditdescription {
   display: block;
 }
-.list .card:hover .deleteEdit button {
+.list .card:hover .deleteEditdescription button {
   cursor: pointer;
   margin: 0px 5px;
 }
-.list .card:hover .deleteEdit .delete:hover i {
+.list .card:hover .deleteEditdescription .delete:hover i {
   color: red;
 }
-.list .card:hover .deleteEdit .edit:hover i {
+.list .card:hover .deleteEditdescription .edit:hover i {
   color: blue;
+}
+.list .editCard {
+  background-color: white;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  display: none;
+}
+.list .editCard textarea {
+  margin-top: 5px;
+  width: 100%;
+  min-height: 40px;
+  height: 50px;
+  resize: vertical;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.list .editCard.show {
+  display: block;
 }
 .list .createNewcard {
   background-color: white;
@@ -132,7 +188,7 @@ header img {
   margin-top: 5px;
 }
 .createList-container .createNewList input {
-  width: calc(100% - 5px);
+  width: 100%;
   padding: 2px 5px;
   box-sizing: border-box;
   margin: 5px 0px;

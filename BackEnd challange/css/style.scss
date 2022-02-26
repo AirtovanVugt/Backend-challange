@@ -41,11 +41,56 @@ header{
     border-radius: 15px;
     box-sizing: border-box;
 
-    .headText{
-        font-size: 20px;
-        font-weight: 900;
-        text-align: center;
-        margin-bottom: 10px;
+    .headList{
+        display: flex;
+    
+        .headText{
+            font-size: 20px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .deleteEditlist{
+            justify-content: right;
+            margin-left: auto;
+
+            button{
+                background-color: black;
+                color: white;
+            }
+
+            .delete{
+                margin-left: 10px;
+            }
+
+            .edit:hover{
+                color: blue;
+            }
+
+            .delete:hover{
+                color: red;
+            }
+        }
+    }
+
+    .editList{
+        background-color: white;
+        border-radius: 10px;
+        padding: 5px;
+        margin-bottom: 5px;
+        display: none;
+
+        input{
+            width: 100%;
+            padding: 2px 5px;
+            box-sizing: border-box;
+            margin: 5px 0px;
+            border-radius: 10px;
+        }
+    }
+
+    .editList.show{
+        display: block;
     }
 
     .card{
@@ -55,7 +100,7 @@ header{
         margin-bottom: 5px;
         border-radius: 10px;
 
-        .deleteEdit{
+        .deleteEditdescription{
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -67,7 +112,7 @@ header{
     .card:hover{
         padding-bottom: 25px;
 
-        .deleteEdit{
+        .deleteEditdescription{
             display: block;
 
             button{
@@ -80,7 +125,6 @@ header{
                 i{
                     color: red;
                 }
-
             }
 
             .edit:hover{
@@ -88,11 +132,31 @@ header{
                 i{
                     color: blue;
                 }
-
             }
         }
+    }
 
+    .editCard{
+        background-color: white;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        border-radius: 10px;
+        display: none;
 
+        textarea{
+            margin-top: 5px;
+            width: 100%;
+            min-height: 40px;
+            height: 50px;
+            resize: vertical;
+            padding: 5px;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+    }
+
+    .editCard.show{
+        display: block;
     }
 
     .createNewcard{
@@ -157,7 +221,7 @@ header{
         margin-top: 5px;
 
         input{
-            width: calc(100% - 5px);
+            width: calc(100%);
             padding: 2px 5px;
             box-sizing: border-box;
             margin: 5px 0px;

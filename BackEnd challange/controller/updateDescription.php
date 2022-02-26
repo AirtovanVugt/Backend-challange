@@ -1,4 +1,4 @@
 <?php
     include("../model/model.php");
-    createList($_POST);
+    updateDescription($_POST);
     header("location: ../toDoList.php");

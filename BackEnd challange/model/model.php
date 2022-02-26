@@ -11,6 +11,7 @@
         }
     }
 
+    //select
 
     function allList(){
         $conn = openCon();
@@ -29,6 +30,8 @@
         return $description;
         $conn = null;
     }
+
+    // create
     
     function createDescription($data){
         $conn = openCon();
@@ -44,9 +47,42 @@
         $conn = null;
     }
 
+    // update
+
+    function updateList($data){
+        $conn = openCon();
+        $query = $conn->prepare("UPDATE list SET hoofdText=:titel WHERE id=:id");
+        $query->execute([":titel" => $data["titel"], ":id" => $data["id"]]);
+        $conn = null;
+    }
+
+    function updateDescription($data){
+        $conn = openCon();
+        $query = $conn->prepare("UPDATE description SET omschrijving=:description WHERE id=:id");
+        $query->execute([":description" => $data["omschrijving"], ":id" => $data["id"]]);
+        $conn = null;
+    }
+
+    // delete
+
+    function deleteList($data){
+        $conn = openCon();
+        $query = $conn->prepare("DELETE FROM list WHERE id=:id");
+        $query->execute([":id" => $data["id"]]);
+        $conn = null;
+    }
+
+    function deleteAllDescriptionsList($data){
+        $conn = openCon();
+        $query = $conn->prepare("DELETE FROM description WHERE hoofdTextId=:id");
+        $query->execute([":id" => $data["id"]]);
+        $conn = null;
+    }
+
     function deleteDescription($data){
         $conn = openCon();
         $query = $conn->prepare("DELETE FROM description WHERE id=:id");
         $query->execute([":id" => $data["id"]]);
         $conn = null;
     }
+

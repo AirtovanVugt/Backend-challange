@@ -1,4 +1,6 @@
 <?php
+
     include("../model/model.php");
-    createList($_POST);
+    deleteAllDescriptionsList($_GET);
+    deleteList($_GET);
     header("location: ../toDoList.php");
