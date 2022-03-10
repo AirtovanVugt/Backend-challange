@@ -13,7 +13,7 @@
     ?>
         <div class=list>
             <div class="headList">
-                <p class="headText"><?php echo $lists["hoofdText"]; ?></p>
+                <p class="headText"><?php echo $lists["hoofdText"]; ?> <?php if(isset($_SESSION["error"])){ echo $_SESSION["error"]; } ?></p>
                 <div class="deleteEditlist">
                     <button class="edit" onclick="editLijst(<?php echo $lists['id']; ?>)"><i class="fa-solid fa-pen-to-square"></i></button>
                     <button class="delete" onclick="verwijderLijst(<?php echo $lists['id']; ?>)"><i class="fa-solid fa-trash"></i></button>
@@ -22,7 +22,7 @@
             <div class="editList" id="editList<?php echo $lists["id"]; ?>">
                 <form method="post" action="<?php echo "controller/updateList.php" ?>">
                     <label for="titel">verander titel</label>
-                    <input type="text" name="titel">
+                    <input type="text" name="titel" required pattern="[a-zA-Z0-9\s]+">
                     <input type="hidden" name="id" value="<?php echo $lists["id"]; ?>">
                     <div class="centerH">
                         <button>veranderen</button>
@@ -45,10 +45,10 @@
                     <div class="editCard" id="editCard<?php echo $descriptions['id']; ?>">
                         <form method="post" action="<?php echo "controller/updateDescription.php" ?>">
                             <label for="omschrijving">verander beschrijving</label>
-                            <textarea name="omschrijving" id="editOmschrijving"><?php echo $descriptions['omschrijving']; ?></textarea>
+                            <textarea required pattern="[a-zA-Z0-9\s]+" name="omschrijving" id="editOmschrijving"><?php echo $descriptions['omschrijving']; ?></textarea>
                             <input type="hidden" name="id" value="<?php echo $descriptions["id"]; ?>">
                             <div class="centerH">
-                                <button>verander</button>
+                                <button>veranderen</button>
                             </div>
                         </form>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="createNewcard" id="createCard<?php echo $count ?>">
                     <form method="post" action="<?php echo "controller/createDescription.php" ?>">
                         <label for="description">Beschrijving</label>
-                        <textarea name="description" id="description"></textarea>
+                        <textarea required pattern="[a-zA-Z0-9\s]+" name="description" id="description"></textarea>
                         <input type="hidden" name="hoofdTextId" value="<?php echo $lists["id"]; ?>">
                         <div class="centerH">
                             <button>aanmaken</button>
@@ -83,7 +83,7 @@
             <div class="createNewList" id="newList">
                 <form method="post" action="<?php echo "controller/createList.php" ?>">
                     <label for="titel">Titel</label>
-                    <input type="text" name="titel" id="titel">
+                    <input required pattern="[a-zA-Z0-9\s]+" type="text" name="titel" id="titel">
                     <div class="centerH">
                         <button>aanmaken</button>
                     </div>
@@ -122,7 +122,6 @@
     }
 
     function editLijst(showen){
-        console.log(showen);
         document.getElementById("editList" + showen).classList.toggle("show");
     }
 </script>

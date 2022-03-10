@@ -235,6 +235,9 @@ header{
 }
 
 footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     background: rgba(240, 238, 238, 0.4);
     backdrop-filter: blur(3px);
     
@@ -242,4 +245,24 @@ footer{
         padding: 10px 0px;
         text-align: center;
     }
+}
+
+.errorMessage{
+    background-color: red;
+    width: 50%;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 10px;
+    transform: translate(-50%, calc(-10px - 100%));
+    padding: 10px 0px;
+    border-radius: 10px;
+    
+    p{
+        text-align: center;
+    }
+}
+
+.errorMessage.show{
+    transform: translate(-50%, 10px);
 }
