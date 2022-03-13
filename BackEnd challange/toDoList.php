@@ -15,8 +15,15 @@
             <div class="headList">
                 <p class="headText"><?php echo $lists["hoofdText"]; ?> <?php if(isset($_SESSION["error"])){ echo $_SESSION["error"]; } ?></p>
                 <div class="deleteEditlist">
-                    <button class="edit" onclick="editLijst(<?php echo $lists['id']; ?>)"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="fliter" onclick="openFilterList(<?php echo $lists['id']; ?>)"><i class="fa-solid fa-filter"></i></button>
                     <button class="delete" onclick="verwijderLijst(<?php echo $lists['id']; ?>)"><i class="fa-solid fa-trash"></i></button>
+                    <button class="edit" onclick="editLijst(<?php echo $lists['id']; ?>)"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <nav class="listFilters" id="filterList<?php echo $lists['id']; ?>">
+                            <ul>
+                                <li><a href="controller/filterTime.php?id=<?php echo $lists['id']; ?>">Filteren op tijd</a></li>
+                                <li><a href="controller/filterStatus.php?id=<?php echo $lists['id']; ?>">Filteren op status</a></li>
+                            </ul>
+                        </nav>
                 </div>
             </div>
             <div class="editList" id="editList<?php echo $lists["id"]; ?>">
@@ -46,6 +53,10 @@
                         <form method="post" action="<?php echo "controller/updateDescription.php" ?>">
                             <label for="omschrijving">verander beschrijving</label>
                             <textarea required pattern="[a-zA-Z0-9\s]+" name="omschrijving" id="editOmschrijving"><?php echo $descriptions['omschrijving']; ?></textarea>
+                            <label for="time">verander hoe lang het duurt</label>
+                            <input type="number" name="time" value="<?php echo $descriptions['tijd']; ?>" min="1" required>
+                            <label for="status">status</label>
+                            <input type="number" name="status" value="<?php echo $descriptions['status']; ?>" min="1" required>
                             <input type="hidden" name="id" value="<?php echo $descriptions["id"]; ?>">
                             <div class="centerH">
                                 <button>veranderen</button>
@@ -60,6 +71,10 @@
                     <form method="post" action="<?php echo "controller/createDescription.php" ?>">
                         <label for="description">Beschrijving</label>
                         <textarea required pattern="[a-zA-Z0-9\s]+" name="description" id="description"></textarea>
+                        <label for="time">hoe lang zal het duren</label>
+                        <input type="number" name="time" min="1" required>
+                        <label for="status">status</label>
+                        <input type="number" name="status" min="1" required>
                         <input type="hidden" name="hoofdTextId" value="<?php echo $lists["id"]; ?>">
                         <div class="centerH">
                             <button>aanmaken</button>
@@ -124,4 +139,9 @@
     function editLijst(showen){
         document.getElementById("editList" + showen).classList.toggle("show");
     }
+
+    function openFilterList(show){
+        document.getElementById("filterList" + show).classList.toggle("show");
+    }
+
 </script>

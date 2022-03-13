@@ -40,6 +40,7 @@ header{
     padding: 5px 10px;
     border-radius: 15px;
     box-sizing: border-box;
+    overflow-y: scroll;
 
     .headList{
         display: flex;
@@ -53,6 +54,7 @@ header{
         .deleteEditlist{
             justify-content: right;
             margin-left: auto;
+            position: relative;
 
             button{
                 background-color: black;
@@ -60,7 +62,7 @@ header{
             }
 
             .delete{
-                margin-left: 10px;
+                margin: 0px 5px;
             }
 
             .edit:hover{
@@ -69,6 +71,33 @@ header{
 
             .delete:hover{
                 color: red;
+            }
+
+            .fliter:hover{
+                color: green;
+            }
+
+            nav{
+                background-color: white;
+                transform: translateX(calc(-50% + 5px));
+                position: absolute;
+                z-index: 2;
+                display: none;
+                
+
+                ul{
+                    list-style-type: none;
+                    text-align: center;
+                    padding: 2px;
+
+                    li{
+                        border-bottom: solid 1px;
+                    }
+                }
+            }
+
+            .listFilters.show{
+                display: block;
             }
         }
     }
@@ -153,6 +182,25 @@ header{
             box-sizing: border-box;
             border-radius: 10px;
         }
+
+        label{
+            margin-top: 5px;
+            display: block;
+        }
+
+        input{
+            width: 100%;
+            padding-left: 10px;
+            margin-top: 5px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        button{
+            margin-top: 5px;
+        }
     }
 
     .editCard.show{
@@ -175,6 +223,25 @@ header{
             padding: 5px;
             box-sizing: border-box;
             border-radius: 10px;
+        }
+
+        label{
+            margin-top: 5px;
+            display: block;
+        }
+
+        input{
+            width: 100%;
+            padding-left: 10px;
+            margin-top: 5px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        button{
+            margin-top: 5px;
         }
     }
 

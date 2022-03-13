@@ -39,6 +39,7 @@ header img {
   padding: 5px 10px;
   border-radius: 15px;
   box-sizing: border-box;
+  overflow-y: scroll;
 }
 .list .headList {
   display: flex;
@@ -51,19 +52,41 @@ header img {
 .list .headList .deleteEditlist {
   justify-content: right;
   margin-left: auto;
+  position: relative;
 }
 .list .headList .deleteEditlist button {
   background-color: black;
   color: white;
 }
 .list .headList .deleteEditlist .delete {
-  margin-left: 10px;
+  margin: 0px 5px;
 }
 .list .headList .deleteEditlist .edit:hover {
   color: blue;
 }
 .list .headList .deleteEditlist .delete:hover {
   color: red;
+}
+.list .headList .deleteEditlist .fliter:hover {
+  color: green;
+}
+.list .headList .deleteEditlist nav {
+  background-color: white;
+  transform: translateX(calc(-50% + 5px));
+  position: absolute;
+  z-index: 2;
+  display: none;
+}
+.list .headList .deleteEditlist nav ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 2px;
+}
+.list .headList .deleteEditlist nav ul li {
+  border-bottom: solid 1px;
+}
+.list .headList .deleteEditlist .listFilters.show {
+  display: block;
 }
 .list .editList {
   background-color: white;
@@ -129,6 +152,22 @@ header img {
   box-sizing: border-box;
   border-radius: 10px;
 }
+.list .editCard label {
+  margin-top: 5px;
+  display: block;
+}
+.list .editCard input {
+  width: 100%;
+  padding-left: 10px;
+  margin-top: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.list .editCard button {
+  margin-top: 5px;
+}
 .list .editCard.show {
   display: block;
 }
@@ -148,6 +187,22 @@ header img {
   padding: 5px;
   box-sizing: border-box;
   border-radius: 10px;
+}
+.list .createNewcard label {
+  margin-top: 5px;
+  display: block;
+}
+.list .createNewcard input {
+  width: 100%;
+  padding-left: 10px;
+  margin-top: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.list .createNewcard button {
+  margin-top: 5px;
 }
 .list .createNewcard.show {
   display: block;

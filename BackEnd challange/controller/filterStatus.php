@@ -1,4 +1,4 @@
 <?php
     include("../model/model.php");
-    createDescription($_POST);
+    filterStatus($_GET);
     header("location: ../toDoList.php");
